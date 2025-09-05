@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --minify",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
-    "publish": "./publish.sh",
+    "publish-npm": "./publish.sh",
     "link": "yalc publish",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",

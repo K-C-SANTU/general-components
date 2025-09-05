@@ -1,2 +1,1 @@
-export * from "@generic/components/Button";
-export * from "@generic/components/CustomCard";
+export * from "@generic/components/index";

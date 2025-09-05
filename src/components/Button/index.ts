@@ -1,2 +1,2 @@
-export { Button as default } from "./Button";
-export type { ButtonProps } from "./Button.types";
+export { default as Button } from "@generic/components/Button/Button";
+export type { ButtonProps } from "@generic/components/Button/Button.types";

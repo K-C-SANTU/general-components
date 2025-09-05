@@ -9,7 +9,7 @@
     ],
     "scripts": {
         "build": "tsconfig-paths -p tsconfig.json && tsup src/index.ts --format cjs,esm --dts --minify",
-        "dev": "tsup index.ts --format cjs,esm --dts --watch",
+        "dev": "tsup src --format cjs,esm --dts --watch",
         "npm-publish": "./publish.sh",
         "link": "yalc publish",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",

@@ -8,10 +8,9 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsconfig-paths -p tsconfig.json && tsup src/index.ts --format cjs,esm --dts --minify",
         "dev": "tsup src --format cjs,esm --dts --watch",
+        "build": "tsup src/index.ts --format cjs,esm --dts --minify",
         "npm-publish": "./publish.sh",
-        "link": "yalc publish",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
         "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
         "format": "prettier --write ."

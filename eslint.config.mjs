@@ -1,32 +1,26 @@
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import { FlatCompat } from "@eslint/eslintrc";
-import { dirname } from "path";
 import js from "@eslint/js";
 import prettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import tseslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser"; // ✅ TS parser
+import tsParser from "@typescript-eslint/parser";
 import reactHooks from "eslint-plugin-react-hooks";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 export default [
     js.configs.recommended,
     prettier,
 
     {
-        ignores: ["eslint.config.mjs", "node_modules/**", "dist/**"],
+        ignores: ["eslint.config.mjs", "node_modules/**", "dist/**", "tsup.config.ts"],
     },
 
     {
-        files: ["**/*.ts", "**/*.tsx"], // ✅ tell ESLint where to use parser
+        files: ["**/*.ts", "**/*.tsx"],
         languageOptions: {
-            parser: tsParser, // ✅ parse TS & JSX
+            parser: tsParser,
             parserOptions: {
                 ecmaFeatures: { jsx: true },
-                project: "./tsconfig.json", // ensures alias + TS support
+                project: "./tsconfig.json",
                 tsconfigRootDir: process.cwd(),
             },
         },
@@ -51,37 +45,32 @@ export default [
         },
 
         rules: {
-            // 🔹 Auto-sort imports
             "simple-import-sort/imports": [
                 "error",
                 {
                     groups: [
-                        ["^react", "^[a-z]"], // npm deps
-                        ["^@generic/(.*)$"], // your aliases
-                        ["^\\u0000"], // side effects
-                        ["^\\.\\.(?!/?$)", "^\\.\\./?$"], // parent relative
-                        ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"], // same folder
+                        ["^react", "^[a-z]"],
+                        ["^@generic/(.*)$"],
+                        ["^\\u0000"],
+                        ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+                        ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
                     ],
                 },
             ],
             "simple-import-sort/exports": "error",
 
-            // 🔹 Block parent-relative imports but allow ./localFile
             "no-restricted-imports": ["error", { patterns: ["../*", "./../*"] }],
 
-            // 🔹 General quality
             "no-console": ["warn", { allow: ["warn", "error"] }],
             "no-debugger": "error",
 
-            // 🔹 TypeScript
             "@typescript-eslint/no-unused-vars": [
                 "error",
                 { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
             ],
 
-            // 🔹 React
-            "react/react-in-jsx-scope": "off", // not needed for React 17+
-            "react/prop-types": "off", // using TS instead
+            "react/react-in-jsx-scope": "off",
+            "react/prop-types": "off",
             "react-hooks/rules-of-hooks": "error",
             "react-hooks/exhaustive-deps": "warn",
         },

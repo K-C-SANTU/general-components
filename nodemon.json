@@ -1,0 +1,6 @@
+{
+    "watch": ["src"],
+    "ext": "ts,tsx,js,jsx,json,css",
+    "ignore": ["dist"],
+    "exec": "rm -rf dist && NODE_ENV=development tsup"
+}

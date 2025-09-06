@@ -11,4 +11,14 @@ export default defineConfig({
     minify: false,
     splitting: false,
     watch: process.env.NODE_ENV === "development", // ✅ rebuild on file change in dev
+    external: [
+        "@mui/material",
+        "@mui/icons-material",
+        "@mui/material-nextjs",
+        "@emotion/react",
+        "@emotion/styled",
+        "@emotion/cache",
+        "react",
+        "react-dom"
+    ],
 });

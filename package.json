@@ -18,9 +18,6 @@
         "format": "prettier --write ."
     },
     "peerDependencies": {
-        "@emotion/cache": ">=11.14.0",
-        "@emotion/react": ">=11",
-        "@emotion/styled": ">=11",
         "@mui/icons-material": ">=5",
         "@mui/material": ">=5",
         "@reduxjs/toolkit": ">=2.9.0",
